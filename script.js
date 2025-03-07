@@ -6458,7 +6458,7 @@ function createSnowflake() {
       snowflake.style.animation = 'none'; // Dừng animation
       setTimeout(() => {
         snowflake.remove();
-      }, 5000);
+      }, 2000);
     } else {
       requestAnimationFrame(checkPosition);
     }
