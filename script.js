@@ -6426,53 +6426,70 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   });
   var cursor = new _cursor.default(document.querySelector('.cursor'));
   },{"../cursor":"LMRJ","./grid":"toX6","../utils":"MgTz"}]},{},["C3Xv"], null)
+// snow
+const button = document.getElementById('button');
+const snowContainer = document.getElementById('snow-container');
+let snowInterval;
 
-  const button = document.getElementById('button');
-  const snowContainer = document.getElementById('snow-container');
-  
-  button.addEventListener('click', () => {
-    const numSnowflakes = 50;
-    for (let i = 0; i < numSnowflakes; i++) {
-      createSnowflake();
+function createSnowflake() {
+  const snowflake = document.createElement('div');
+  snowflake.classList.add('snowflake');
+
+  snowflake.style.position = 'fixed';
+  snowflake.style.left = Math.random() * 100 + 'vw';
+  snowflake.style.top = Math.random() * 20 + 'px';
+
+  const size = Math.random() * 5 + 5;
+  snowflake.style.width = size + 'px';
+  snowflake.style.height = size + 'px';
+
+  const animationDuration = Math.random() * 3 + 2;
+  snowflake.style.animation = `fall ${animationDuration}s linear forwards`;
+
+  const direction = Math.random() > 0.5 ? 20 : -20;
+  snowflake.style.setProperty('--direction', `${direction}vw`);
+
+  snowContainer.appendChild(snowflake);
+
+  // Kiểm tra vị trí và cập nhật bằng requestAnimationFrame
+  function checkPosition() {
+    if (snowflake.getBoundingClientRect().bottom >= window.innerHeight - 1) {
+      snowflake.style.top = `calc(100vh - ${size}px)`; // Đặt vị trí top ở cạnh dưới
+      snowflake.style.animation = 'none'; // Dừng animation
+      setTimeout(() => {
+        snowflake.remove();
+      }, 5000);
+    } else {
+      requestAnimationFrame(checkPosition);
     }
-  });
-  
-  function createSnowflake() {
-    const snowflake = document.createElement('div');
-    snowflake.classList.add('snowflake');
-  
-    // Vị trí ngẫu nhiên
-    snowflake.style.left = Math.random() * 100 + 'vw';
-    snowflake.style.top = '-10px';
-  
-    // Kích thước ngẫu nhiên
-    const size = Math.random() * 5 + 5;
-    snowflake.style.width = size + 'px';
-    snowflake.style.height = size + 'px';
-  
-    // Thời gian rơi ngẫu nhiên
-    const animationDuration = Math.random() * 10 + 2;
-    snowflake.style.animation = `fall ${animationDuration}s linear`;
-  
-    // Hướng rơi ngẫu nhiên (thêm)
-    const direction = Math.random() > 0.5 ? 20 : -20; // Rơi sang phải hoặc trái
-    snowflake.style.animation = `fall ${animationDuration}s linear forwards`;
-    snowflake.style.setProperty('--direction', `${direction}vw`);
-  
-    snowContainer.appendChild(snowflake);
-  
-    setTimeout(() => {
-      snowflake.remove();
-    }, animationDuration * 1000);
   }
-  
-  // Cập nhật keyframes CSS để sử dụng biến hướng
-  const style = document.createElement('style');
-  style.textContent = `
-    @keyframes fall {
-      to {
-        transform: translate(var(--direction), 100vh) rotate(360deg);
+
+  checkPosition();
+}
+
+function startSnow() {
+  if (!snowInterval) {
+    snowInterval = setInterval(() => {
+      for (let i = 0; i < 3; i++) {
+        createSnowflake();
       }
+    }, 50);
+  }
+}
+
+function stopSnow() {
+  clearInterval(snowInterval);
+  snowInterval = null;
+}
+
+button.addEventListener('click', startSnow);
+
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes fall {
+    to {
+      transform: translate(var(--direction), 0);
     }
-  `;
-  document.head.appendChild(style);
+  }
+`;
+document.head.appendChild(style);
