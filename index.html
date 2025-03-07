@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="vi" class="no-js">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Chúc mừng 8/3!</title>
+	<link rel="shortcut icon" href="./rose.png">
+	<link rel="stylesheet" href="https://use.typekit.net/eqx3jwb.css">
+	<link rel="stylesheet" type="text/css" href="./style.css">
+	<script>document.documentElement.className = "js";
+
+		var supportsCssVars = function supportsCssVars() {
+			var e,
+				t = document.createElement("style");
+			return t.innerHTML = "root: { --tmp-var: bold; }", document.head.appendChild(t), e = !!(window.CSS && window.CSS.supports && window.CSS.supports("font-weight", "var(--tmp-var)")), t.parentNode.removeChild(t), e;
+		};
+
+		supportsCssVars() || alert("Please view this demo in a modern browser that supports CSS Variables.");</script>
+</head>
+
+<body class="demo-1 loading">
+	<main>
+		<div class="message">Please view this demo on a desktop to see the effect.</div>
+		<div class="frame">
+		</div>
+		<div class="content">
+			<div class="grid">
+				<div class="grid__item pos-2">
+					<div class="grid__item-img" style="background-image:url(./img/img1.jpg);" class="hover"></div>
+				</div>
+				<div class="grid__item pos-3">
+					<div class="grid__item-img" style="background-image:url(./img/img3.jpg);" class="hover"></div>
+				</div>
+				<div class="grid__item pos-4">
+					<div class="grid__item-img" style="background-image:url(./img/img4.jpg);" class="hover"></div>
+				</div>
+				<div class="grid__item pos-1">
+					<div class="grid__item-img" style="background-image:url(./img/img2.jpg);" class="hover"></div>
+				</div>
+				<div class="grid__item pos-5">
+					<div class="grid__item-img" style="background-image:url(./img/img5.jpg);" class="hover"></div>
+				</div>
+				<div class="grid__item pos-6">
+					<div class="grid__item-img" style="background-image:url(./img/img6.jpg);" class="hover"></div>
+				</div>
+				<div class="grid__item pos-7">
+					<div class="grid__item-img" style="background-image:url(./img/img7.jpg);" class="hover"></div>
+				</div>
+				<div class="grid__item pos-8">
+					<div class="grid__item-img" style="background-image:url(./img/img8.jpg);" class="hover"></div>
+				</div>
+				<div class="grid__item pos-9">
+					<div class="grid__item-img" style="background-image:url(./img/img9.jpg);" class="hover"></div>
+				</div>
+				<div class="grid__item pos-10">
+					<div class="grid__item-img" style="background-image:url(./img/img10.jpg);" class="hover"></div>
+				</div>
+			</div>
+			<h2 class="content__title no-select">
+				<span><button class="heart-button" id="button"
+					onclick="document.getElementById('myAudio').play()"><span style="font-family: myFont;
+">Click here</span></button></span>
+				<span>hnhyy</span>
+			</h2>
+			<h2 class="content__title no-select">
+				<span class="content__title-sub">Chúc em 8/3 ngập tràn niềm vui và hạnh phúc</span>
+			</h2>
+			<div id="snow-container"></div>
+
+		</div>
+	</main>
+	<svg class="cursor" width="80" height="80" viewBox="0 0 80 80">
+		<circle class="cursor__inner" cx="40" cy="40" r="20"></circle>
+	</svg>
+	<script src="./script.js"></script>
+	<audio id="myAudio">
+		<source src="./NgayTuyetVoiNhat.mp3" type="audio/mpeg">
+	</audio>
+	<style>
+        /* CSS cho nút hình trái tim */
+        .heart-button {
+			display: inline-block;
+            width: 100px; /* Chiều rộng tổng thể */
+            height: 90px; /* Chiều cao tổng thể */
+            background: transparent; /* Xóa nền vuông */
+            border: none; /* Xóa viền */
+            cursor: pointer;
+            display: flex; /* Dùng flex để căn giữa chữ */
+            justify-content: center;
+            align-items: center;
+            color: white; /* Màu chữ */
+            font-size: 16px;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Tạo hình trái tim bằng pseudo-elements */
+        .heart-button::before,
+        .heart-button::after {
+            content: '';
+            position: absolute;
+            width: 70px; /* Kích thước nửa trái tim */
+            height: 110px; /* Chiều cao nửa trái tim */
+            background: red; /* Màu trái tim */
+            border-radius: 50px 50px 0 0; /* Bo tròn trên, phẳng dưới */
+            top: -50px; /* Đưa lên trên để tạo hình */
+            z-index: -1; /* Đưa trái tim xuống dưới chữ */
+        }
+
+        .heart-button::before {
+            transform: rotate(-45deg); /* Nửa trái */
+            left: 15px;
+        }
+
+        .heart-button::after {
+            transform: rotate(45deg); /* Nửa phải */
+            left: 45px;
+        }
+
+        /* Hiệu ứng khi hover */
+        .heart-button:hover::before,
+        .heart-button:hover::after {
+            background: pink; /* Đổi màu khi hover */
+        }
+
+        /* Đảm bảo chữ ở trên cùng và căn giữa */
+        .heart-button span {
+            position: relative;
+            z-index: 1; /* Đưa chữ lên trên */
+        }
+
+		.heart-button:active {
+  transform: translateY(10px); /* Hiệu ứng nổi lên khi nhấn */
+}
+#snow-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  .snowflake {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border-radius: 50%;
+    opacity: 0.7;
+    pointer-events: none;
+  }
+  @keyframes fall {
+    to {
+      transform: translate(20vw, 100vh) rotate(360deg); /* Tuyết rơi chéo và xoay */
+    }
+  }
+    </style>
+</body>
+
+</html>
